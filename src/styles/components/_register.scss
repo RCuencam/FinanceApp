@@ -1,0 +1,33 @@
+.form__content-form-container
+{
+    display: flex;
+    width: 100%;
+}
+.form-register
+{
+    width: 650px;
+}
+.form__content-form-section:nth-child(1)
+{
+    margin: 0 10px 0 0;
+}
+.form__content-form-section:nth-child(2)
+{
+    margin: 0 0 0 10px;
+}
+
+.form__content-form-section
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__content-form-register
+{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

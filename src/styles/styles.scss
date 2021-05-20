@@ -1,0 +1,21 @@
+@import "./settings";
+@import "./base";
+@import "./components/login";
+@import "./components/register";
+@import "./components/navbar";
+@import "./components/ratemoney";
+@import "./components/home";
+@import "./components//modal";
+@import "./components/history";
+@import "./components/filter";
+@import "./components/operation";
+
+html
+{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+*
+{
+    box-sizing: border-box;
+}
