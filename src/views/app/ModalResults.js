@@ -1,8 +1,29 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { Modal } from 'reactstrap';
+import CalculateTCEA from '../../helpers/CalculateTCEA';
 
-export const ModalResults = ({toggle,modal,setModal,value,data}) => {
+export const ModalResults = ({toggle,modal,setModal,value,data,rate}) => {
+    const [dataJson,setDataJson]=useState(data)
+    const [resultado,setResultado]=useState(value)
+    useEffect(()=>{
+        if(data.moneda==='dolares'){
+            setDataJson({...dataJson,moneda:"dolares"})
+            setResultado(CalculateTCEA(data,rate))
+        }else{
+            setDataJson({...dataJson,moneda:"soles"})
+            setResultado(CalculateTCEA(data,rate))
+        }
+    },[data])
+    const updateResults=()=>{
+        if(dataJson.moneda==='dolares'){
+            setDataJson({...dataJson,moneda:"soles"})
+            setResultado(CalculateTCEA({...data,moneda:"soles"},rate))
+        }else{
 
+            setDataJson({...dataJson,moneda:"dolares"})
+            setResultado(CalculateTCEA({...data,moneda:"dolares"},rate))
+        }
+    }
 
     return (
         <div>
@@ -14,7 +35,7 @@ export const ModalResults = ({toggle,modal,setModal,value,data}) => {
                     <div className="modal__content-results">
                         <div className="modal__content-results-left">
                             <div className="modal__content-results-item">
-                                <p>Tipo de Moneda: <b className="text-green">{data.moneda}</b> </p> 
+                                <p>Tipo de Moneda: <b className="text-green">{dataJson.moneda}</b> </p> 
                             </div>
                             <div className="modal__content-results-item">
                                 <p>Tipo de Tasa: <b className="text-green">{data.tasa}</b> </p> 
@@ -44,7 +65,8 @@ export const ModalResults = ({toggle,modal,setModal,value,data}) => {
                             </div>
                         </div>
                     </div>
-                    <h2 className="modal__content-result">TCEA: {value.TCEA}%</h2>
+                    <h2 className="modal__content-result">TCEA: {resultado.TCEA}%</h2>
+                    <button onClick={updateResults} className="modal_results">Cambiar a {data.moneda==="soles"? "dolares" : "soles" }</button>
                 </div>
                 
             </Modal>

@@ -13,8 +13,7 @@ const CalculateTCEA = (data,rate) => {
     
     //Posible error: Esta resta cuenta todos los meses con días exactos, no cuenta 30 días por mes
     //Falta corregir las fechas, el calendario no calcula bien 30 o 60 días
-    let fecha=Math.round(restaFechas/(1000*60*60*24))-1;
-
+    let fecha=Math.round(restaFechas/(1000*60*60*24));
     let monto_operacion=operacion;
 
 
@@ -37,9 +36,6 @@ const CalculateTCEA = (data,rate) => {
 
     let TCEA=((Math.pow((valor_entregado/valor_recibido),(360/fecha))-1)*100).toFixed(2);
 
-    console.log('tasa_efectiva',tasa_efectiva_periodo);
-    console.log('tasa_descuento',tasa_descuento);
-    console.log('fecha',fecha);
 
     return {TCEA,costes_iniciales_totales,costes_finales_totales}
 }

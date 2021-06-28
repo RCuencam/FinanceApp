@@ -6,6 +6,11 @@ export const OperationReducer=(state=[],action)=>
     {
         case types.add:
             return [...state,action.payload]
+        case types.change:
+            return state.map(item=>{
+                item.moneda=action.payload
+                return item
+            })
         default:
             return state
     }

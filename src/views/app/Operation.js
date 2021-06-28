@@ -14,7 +14,7 @@ export const Operation = ({data,contador}) => {
                     {` TCEA ${data.tcea.TCEA} %`}
                 </div>
             </div>
-            <ModalResults toggle={toggle} modal={modal} setModal={setModal} data={data} value={data.tcea}/>
+            <ModalResults toggle={toggle} modal={modal} setModal={setModal} data={data} value={data.tcea} rate={data.rate}/>
         </div>
     )
 }

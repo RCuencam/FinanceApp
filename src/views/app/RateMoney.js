@@ -4,7 +4,7 @@ export const RateMoney = ({rate,setRate}) => {
 
     const fetchRate=async()=>
     {
-        const response=await fetch('https://dni.optimizeperu.com/api/tipo-cambio?format=json');
+        const response=await fetch('https://deperu.com/api/rest/cotizaciondolar.json');
         const data=await response.json()
         return data
     }
@@ -12,7 +12,7 @@ export const RateMoney = ({rate,setRate}) => {
     {
         fetchRate().then((rate)=>
         {
-            setRate(rate.cambio_actual.compra)
+            setRate(rate.Cotizacion[0].Compra)
         })
     },[setRate])
 

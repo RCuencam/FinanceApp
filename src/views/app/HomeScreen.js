@@ -68,7 +68,7 @@ export const HomeScreen = () => {
             setData(dataJson)
             dispatch({
                 type:types.add,
-                payload:{...dataJson,tcea:CalculateTCEA(dataJson,rate)}
+                payload:{...dataJson,tcea:CalculateTCEA(dataJson,rate),rate}
             })
         })
         .catch((err)=>setErrorMessage(err.errors))
@@ -91,7 +91,6 @@ export const HomeScreen = () => {
 
     }
 
-    
     const handleSubmit=(e)=>
     {
         e.preventDefault()
@@ -172,7 +171,7 @@ export const HomeScreen = () => {
                     <button type="submit" className="btna my-4">CALCULAR</button>
                 </div>
                 {errorValidation &&
-                    <ModalResults toggle={toggle} modal={modal} setModal={setModal} data={data} value={TCEA}/>
+                    <ModalResults toggle={toggle} modal={modal} setModal={setModal} data={data} value={TCEA} rate={rate} setData={setData}/>
                 }
             </Form>
         </div>
