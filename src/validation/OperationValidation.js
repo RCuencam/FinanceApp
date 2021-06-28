@@ -2,6 +2,7 @@ import * as yup from "yup"
 
 export const operationSchema=yup.object().shape({
     moneda:yup.string().required('Rellene todos los campos'),
+    tasa:yup.string(),
     tasa:yup.string().required('Rellene todos los campos'),
     tasaValue:yup.number().required().max(100,'El campo de tasa debe ir de 0 a 100').typeError("Rellene todos los campos"),
     capitalizacion:yup.number().required().typeError("Rellene todos los campos"),

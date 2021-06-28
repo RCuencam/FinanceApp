@@ -28,6 +28,7 @@ export const HomeScreen = () => {
     const toggle=() => setModal(!modal);
 
     let [values,handleInputChange]=useForm({
+        tipo_tasa:'',
         tasaValue:'',
         capitalizacion:0,
         operacion:'',
@@ -41,7 +42,7 @@ export const HomeScreen = () => {
         gastosFinales:''
     })
 
-    const {tasaValue,capitalizacion,operacion,fechaInicio,
+    const {tipo_tasa,tasaValue,capitalizacion,operacion,fechaInicio,
         fechaFin,comision,fotocopias,gastosIniciales,portes,
         gastosAdm,gastosFinales}=values
         
@@ -50,6 +51,7 @@ export const HomeScreen = () => {
     {
         await operationSchema.validate({
             id:uuidv4(),
+            tasa,
             moneda,
             tasa,
             tasaValue,
@@ -74,6 +76,7 @@ export const HomeScreen = () => {
         .catch((err)=>setErrorMessage(err.errors))
 
         await operationSchema.isValid({
+            tasa,
             moneda,
             tasa,
             tasaValue,
@@ -121,12 +124,7 @@ export const HomeScreen = () => {
                             <label className="home__form-label">Valor de tasa: </label>
                             <Input className="home__form-input-sm" type="number" name="tasaValue" onChange={handleInputChange} value={tasaValue} maxLength={3}/>%
                         </FormGroup>
-                        {tasa==="nominal" &&
-                        <FormGroup className="d-flex align-c my-4">
-                            <label className="home__form-label">Capitalización: </label>
-                            <Input className="home__form-input" type="number" name="capitalizacion" onChange={handleInputChange} value={capitalizacion} maxLength={5}/>
-                        </FormGroup>
-                        }
+                        
                         <FormGroup className="d-flex align-c my-4">
                             <label className="home__form-label">M. de operación: </label>
                             <Input className="home__form-input" type="number" name="operacion" onChange={handleInputChange} value={operacion}/>
