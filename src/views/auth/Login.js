@@ -63,6 +63,15 @@ export const Login = () => {
         }
                 
     }
+    const handleDemo=()=>{
+        dispatch({
+            type:types.login,
+            payload:{
+                name:'Admin',
+                email
+            }
+        })
+    }
     return (
         <div className="form__main">
             <div className="form__content">
@@ -79,7 +88,13 @@ export const Login = () => {
                     <input name="password" className="input form__content-input" type="password" placeholder="Contraseña" onChange={handleChange} value={password}/>
                     <br/>
                     <div className="form__content-button">
-                        <button className="btna btn-primary" type="submit">INGRESAR</button>
+                        <div>
+                            <button className="btna btn-primary" type="submit">INGRESAR</button>
+                        </div>
+                        <br/>
+                        <div>
+                            <button className="btna btn-primary" type="submit" onClick={handleDemo}>PROBAR DEMO</button>
+                        </div>
                     </div>
                     <br/>
                     <Link to="/auth/register" className="form__content-link">Registrate</Link>

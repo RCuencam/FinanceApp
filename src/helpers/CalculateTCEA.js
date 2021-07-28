@@ -20,14 +20,12 @@ const CalculateTCEA = (data,rate) => {
     }
 
     let tasa_nominal_periodo=(Math.pow((1+(tasaValue/100)/360),(360)))-1;
-    console.log('tipo de tasa',tasa);
 
     let tasa_efectiva_periodo=(Math.pow((1+(tasaValue/100)),(fecha/360)))-1;
     let tasa_descuento=0;
     if(tasa==="nominal"){
 
          tasa_descuento=tasa_nominal_periodo/(1+tasa_nominal_periodo)
-         console.log('tasa_efectiva',tasa_nominal_periodo);
     }
     else{
         tasa_descuento=tasa_efectiva_periodo/(1+tasa_efectiva_periodo)
